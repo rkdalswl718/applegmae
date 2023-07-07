@@ -24,7 +24,7 @@ const createApple = () => {
 };
 
 const getRandomCoordinate = () => {
-    return Math.floor(Math.random() * 400); // 랜덤 좌표 400
+    return Math.floor(Math.random() * 370); // 랜덤 좌표 400
   };
   
 
