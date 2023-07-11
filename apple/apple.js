@@ -45,12 +45,15 @@ const startTimer = () => {
             clearInterval(timerInterval);
             endGame();
         }
-    }, 1000); // 1초마다 타이머를 업데이트합니다.
+    }, 1000); // 1초마다 타이머를 업데이트
 };
 
 const endGame = () => {
-    alert("게임 종료. 점수는 `${score}`점 입니다.");
+    alert(`게임 종료. 점수는 ${score}점 입니다.`);
+    window.location.reload()
     startButton.style.display = 'block'; // 게임 종료 후 시작 버튼 표시
+    timerDisplay.style.display = 'none';
+    score = 0;
     gameStarted = false; // 게임 종료
 };
 
@@ -67,7 +70,6 @@ const initGame = () => {
     updateTimer();
     startTimer();
     createApple();
-    startButton.style.display = 'none'; // 게임 시작 후 시작 버튼 숨기기
     gameStarted = true; // 게임 시작
 };
 
