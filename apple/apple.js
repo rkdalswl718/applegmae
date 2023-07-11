@@ -1,10 +1,15 @@
 const gameBoard = document.querySelector('.gameBoard');
 const scoreDisplay = document.querySelector('.score');
+const timerDisplay = document.createElement('h3');
+const timerInput = document.getElementById('timer');
+const startButton = document.getElementById('startButton');
 let score = 0;
+let timer = 0; // 타이머 초기값
+let gameStarted = false; // 게임 시작 여부
 
 gameBoard.addEventListener('click', (event) => {
-    if (event.target.classList.contains('apple')) {
-        event.target.remove(); //클릭되면 사과 제거
+    if (gameStarted && event.target.classList.contains('apple')) {
+        event.target.remove();
         score++;
         scoreDisplay.textContent = score;
         createApple();
@@ -25,7 +30,52 @@ const createApple = () => {
 
 const getRandomCoordinate = () => {
     return Math.floor(Math.random() * 370); // 랜덤 좌표 400
-  };
-  
+};
 
-createApple();
+const updateTimer = () => {
+    timerDisplay.textContent = `남은 시간: ${timer}초`;
+};
+
+const startTimer = () => {
+    const timerInterval = setInterval(() => {
+        timer--;
+        updateTimer();
+
+        if (timer === 0) {
+            clearInterval(timerInterval);
+            endGame();
+        }
+    }, 1000); // 1초마다 타이머를 업데이트합니다.
+};
+
+const endGame = () => {
+    gameBoard.innerHTML = `<h2>게임 종료</h2><h4>최종 점수: ${score}</h4>`;
+    startButton.style.display = 'block'; // 게임 종료 후 시작 버튼 표시
+    gameStarted = false; // 게임 종료
+};
+
+startButton.addEventListener('click', () => {
+    timer = parseInt(timerInput.value);
+    if (timer > 0) {
+        initGame();
+    }
+});
+
+const initGame = () => {
+    gameBoard.innerHTML = '';
+    gameBoard.appendChild(timerDisplay);
+    updateTimer();
+    startTimer();
+    createApple();
+    startButton.style.display = 'none'; // 게임 시작 후 시작 버튼 숨기기
+    gameStarted = true; // 게임 시작
+};
+
+startButton.style.display = 'block'; // 페이지 로드 시 시작 버튼 표시
+
+startButton.addEventListener('click', () => {
+    if (!gameStarted) {
+        startButton.style.display = 'none'; // 시작 버튼 숨기기
+        initGame();
+    }
+});

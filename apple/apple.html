@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,21 @@
     <link rel="icon" type="images/png" href="https://emojigraph.org/media/apple/red-apple_1f34e.png">
     <title>사과먹기</title>
 </head>
+
 <body>
     <div id="container">
-
         <h1>사과 먹기 게임</h1>
-      <h2>점수: <span class="score">0</span></h2>
-      <div class="gameBoard"></div>
-
+        <h2>점수: <span class="score">0</span></h2>
+        <div id="timerSection">
+            <label for="timer">타이머(초):</label>
+            <input type="number" id="timer" min="1" value="30">
+          </div>
+          <div class="gameBoard">
+            <button id="startButton">게임 시작</button>
+          </div>
     </div>
 
-  <script src="./apple.js"></script>
+    <script src="./apple.js"></script>
 </body>
+
 </html>
