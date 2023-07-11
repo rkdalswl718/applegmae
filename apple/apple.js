@@ -49,7 +49,7 @@ const startTimer = () => {
 };
 
 const endGame = () => {
-    gameBoard.innerHTML = `<h2>게임 종료</h2><h4>최종 점수: ${score}</h4>`;
+    alert("게임 종료. 점수는 `${score}`점 입니다.");
     startButton.style.display = 'block'; // 게임 종료 후 시작 버튼 표시
     gameStarted = false; // 게임 종료
 };

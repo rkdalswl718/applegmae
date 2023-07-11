@@ -52,4 +52,12 @@ body {
 
   #timer {
     width: 2.3vw;
+    margin-left: 0.3vw;
+    margin-top: 0.5vh;
+  }
+
+  #timerSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
