@@ -5,6 +5,7 @@
 
 body {
     background-color: rgb(198, 255, 198);
+    margin-top: 13vh;
 }
 
 #container {
@@ -12,9 +13,18 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 13vh;
 }
 
+.applee {
+  display:flex;
+  align-items : center;
+  justify-content: center;
+}
+
+.applee > img {
+  width:3vw;
+  height: 6vh;
+}
 
 .gameBoard {
     width: 400px;
